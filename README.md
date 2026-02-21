@@ -38,7 +38,7 @@ Built with [Textual](https://github.com/Textualize/textual).
 ### With pipx (recommended)
 
 ```sh
-pipx install git+https://github.com/youruser/tmuxplain.git
+pipx install git+https://github.com/bradstallion/tmuxplain.git
 ```
 
 After installation the `tmuxplain` command is available globally.
@@ -52,7 +52,7 @@ pip install .
 ### For development
 
 ```sh
-git clone https://github.com/youruser/tmuxplain.git
+git clone https://github.com/bradstallion/tmuxplain.git
 cd tmuxplain
 python -m venv venv
 source venv/bin/activate

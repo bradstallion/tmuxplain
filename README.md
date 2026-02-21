@@ -135,20 +135,3 @@ color_theme = "dark"
 python -m pytest tests/
 ```
 
----
-
-## Project layout
-
-```
-tmuxplain/
-├── __init__.py
-├── __main__.py   # python -m tmuxplain
-├── main.py       # entry point
-├── app.py        # Textual screens and widgets
-├── tmux.py       # all tmux subprocess calls
-├── config.py     # config loading
-└── help.py       # help screen content
-tests/
-└── test_tmux.py
-pyproject.toml
-```

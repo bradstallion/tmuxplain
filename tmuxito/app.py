@@ -1,4 +1,4 @@
-"""Textual app — all screens and widgets for tmuxplain."""
+"""Textual app — all screens and widgets for tmuxito."""
 from __future__ import annotations
 
 from typing import Optional
@@ -18,9 +18,9 @@ from textual.widgets import (
     Static,
 )
 
-import tmuxplain.tmux as tmux_ops
-from tmuxplain.config import Config, load_config
-from tmuxplain.help import HELP_CONTENT
+import tmuxito.tmux as tmux_ops
+from tmuxito.config import Config, load_config
+from tmuxito.help import HELP_CONTENT
 
 
 # ── Modal: kill confirmation ──────────────────────────────────────────────────
@@ -458,9 +458,9 @@ class SessionScreen(Screen):
 # ── Application ───────────────────────────────────────────────────────────────
 
 class TmuxNavigatorApp(App):
-    """tmuxplain — because someone had to explain it to you."""
+    """tmuxito — because someone had to explain it to you."""
 
-    TITLE = "tmuxplain"
+    TITLE = "tmuxito"
     ENABLE_COMMAND_PALETTE = False
 
     CSS = """

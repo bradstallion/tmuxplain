@@ -1,4 +1,4 @@
-"""Tests for tmuxplain.tmux (subprocess layer)."""
+"""Tests for tmuxito.tmux (subprocess layer)."""
 from __future__ import annotations
 
 import subprocess
@@ -6,7 +6,7 @@ from unittest.mock import MagicMock, patch
 
 import pytest
 
-import tmuxplain.tmux as tmux_ops
+import tmuxito.tmux as tmux_ops
 
 
 # ── is_installed ──────────────────────────────────────────────────────────────
@@ -47,7 +47,7 @@ def _mock_run_ls(args, **kwargs):
 
 def test_list_sessions_returns_sessions():
     with patch("shutil.which", return_value="/usr/bin/tmux"):
-        with patch("tmuxplain.tmux._run", side_effect=_mock_run_ls):
+        with patch("tmuxito.tmux._run", side_effect=_mock_run_ls):
             sessions = tmux_ops.list_sessions()
     assert len(sessions) == 2
     names = [s.name for s in sessions]
@@ -57,7 +57,7 @@ def test_list_sessions_returns_sessions():
 
 def test_list_sessions_attached_flag():
     with patch("shutil.which", return_value="/usr/bin/tmux"):
-        with patch("tmuxplain.tmux._run", side_effect=_mock_run_ls):
+        with patch("tmuxito.tmux._run", side_effect=_mock_run_ls):
             sessions = {s.name: s for s in tmux_ops.list_sessions()}
     assert sessions["alpha"].attached is True
     assert sessions["beta"].attached is False
@@ -65,7 +65,7 @@ def test_list_sessions_attached_flag():
 
 def test_list_sessions_sort_name():
     with patch("shutil.which", return_value="/usr/bin/tmux"):
-        with patch("tmuxplain.tmux._run", side_effect=_mock_run_ls):
+        with patch("tmuxito.tmux._run", side_effect=_mock_run_ls):
             sessions = tmux_ops.list_sessions(sort="name")
     assert sessions[0].name == "alpha"
     assert sessions[1].name == "beta"
@@ -73,7 +73,7 @@ def test_list_sessions_sort_name():
 
 def test_list_sessions_sort_attached():
     with patch("shutil.which", return_value="/usr/bin/tmux"):
-        with patch("tmuxplain.tmux._run", side_effect=_mock_run_ls):
+        with patch("tmuxito.tmux._run", side_effect=_mock_run_ls):
             sessions = tmux_ops.list_sessions(sort="attached")
     assert sessions[0].attached is True
 
@@ -88,7 +88,7 @@ def test_list_sessions_tmux_error():
         m = MagicMock()
         m.returncode = 1
         m.stdout = ""
-        with patch("tmuxplain.tmux._run", return_value=m):
+        with patch("tmuxito.tmux._run", return_value=m):
             assert tmux_ops.list_sessions() == []
 
 
@@ -97,14 +97,14 @@ def test_list_sessions_tmux_error():
 def test_kill_session_success():
     with patch("shutil.which", return_value="/usr/bin/tmux"):
         m = MagicMock(returncode=0)
-        with patch("tmuxplain.tmux._run", return_value=m):
+        with patch("tmuxito.tmux._run", return_value=m):
             assert tmux_ops.kill_session("mysession") is True
 
 
 def test_kill_session_failure():
     with patch("shutil.which", return_value="/usr/bin/tmux"):
         m = MagicMock(returncode=1)
-        with patch("tmuxplain.tmux._run", return_value=m):
+        with patch("tmuxito.tmux._run", return_value=m):
             assert tmux_ops.kill_session("mysession") is False
 
 
@@ -113,7 +113,7 @@ def test_kill_session_failure():
 def test_rename_session_success():
     with patch("shutil.which", return_value="/usr/bin/tmux"):
         m = MagicMock(returncode=0)
-        with patch("tmuxplain.tmux._run", return_value=m):
+        with patch("tmuxito.tmux._run", return_value=m):
             assert tmux_ops.rename_session("old", "new") is True
 
 
@@ -122,7 +122,7 @@ def test_rename_session_success():
 def test_new_session_success():
     with patch("shutil.which", return_value="/usr/bin/tmux"):
         m = MagicMock(returncode=0)
-        with patch("tmuxplain.tmux._run", return_value=m):
+        with patch("tmuxito.tmux._run", return_value=m):
             assert tmux_ops.new_session("test") is True
 
 
@@ -134,7 +134,7 @@ _FAKE_WINDOWS = "0|editor|1|2\n1|shell|0|1\n"
 def test_list_windows():
     with patch("shutil.which", return_value="/usr/bin/tmux"):
         m = MagicMock(returncode=0, stdout=_FAKE_WINDOWS)
-        with patch("tmuxplain.tmux._run", return_value=m):
+        with patch("tmuxito.tmux._run", return_value=m):
             windows = tmux_ops.list_windows("mysession")
     assert len(windows) == 2
     assert windows[0].name == "editor"

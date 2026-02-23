@@ -1,11 +1,11 @@
-"""Config loading from ~/.config/tmuxplain/config.toml."""
+"""Config loading from ~/.config/tmuxito/config.toml."""
 from __future__ import annotations
 
 import tomllib
 from dataclasses import dataclass
 from pathlib import Path
 
-CONFIG_PATH = Path("~/.config/tmuxplain/config.toml").expanduser()
+CONFIG_PATH = Path("~/.config/tmuxito/config.toml").expanduser()
 
 
 @dataclass

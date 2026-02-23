@@ -1,11 +1,11 @@
-"""Entry point for tmuxplain."""
+"""Entry point for tmuxito."""
 from __future__ import annotations
 
 import subprocess
 import sys
 
-import tmuxplain.tmux as tmux_ops
-from tmuxplain.app import TmuxNavigatorApp
+import tmuxito.tmux as tmux_ops
+from tmuxito.app import TmuxNavigatorApp
 
 
 def main() -> None:

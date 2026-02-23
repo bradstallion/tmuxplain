@@ -96,7 +96,7 @@ Press **Esc** or **q** to close.
 
 ---
 
-## tmux Navigator Keybindings
+## tmuxito Keybindings
 
 | Key | Action |
 |-----|--------|

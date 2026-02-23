@@ -1,6 +1,6 @@
-# tmuxplain
+# tmuxito
 
-> **because someone had to explain it to you**
+> **tmux sessions made simple, because you forgot what was running...**
 
 A terminal UI for managing tmux sessions — browse, attach, rename, kill, and
 preview sessions without ever leaving the keyboard.
@@ -42,10 +42,10 @@ Built with [Textual](https://github.com/Textualize/textual).
 ### With pipx (recommended)
 
 ```sh
-pipx install git+https://github.com/bradstallion/tmuxplain.git
+pipx install git+https://github.com/bradstallion/tmuxito.git
 ```
 
-After installation the `tmuxplain` command is available globally.
+After installation the `tmuxito` command is available globally.
 
 ### With pip inside a virtualenv
 
@@ -56,8 +56,8 @@ pip install .
 ### For development
 
 ```sh
-git clone https://github.com/bradstallion/tmuxplain.git
-cd tmuxplain
+git clone https://github.com/bradstallion/tmuxito.git
+cd tmuxito
 python -m venv venv
 source venv/bin/activate
 pip install -e .
@@ -68,13 +68,13 @@ pip install -e .
 ## Usage
 
 ```sh
-tmuxplain
+tmuxito
 ```
 
 Or, without installing:
 
 ```sh
-python -m tmuxplain
+python -m tmuxito
 ```
 
 ---
@@ -113,7 +113,7 @@ python -m tmuxplain
 
 ## Configuration
 
-tmuxplain reads `~/.config/tmuxplain/config.toml` on startup.
+tmuxito reads `~/.config/tmuxito/config.toml` on startup.
 The file is optional; all settings have defaults.
 
 ```toml
@@ -134,4 +134,3 @@ color_theme = "dark"
 ```sh
 python -m pytest tests/
 ```
-
